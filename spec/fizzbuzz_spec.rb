@@ -6,6 +6,29 @@
 
 require 'fizzbuzz'
 
+range = [
+  1,
+  2,
+  'fizz',
+  4,
+  'buzz',
+  'fizz',
+  7,
+  8,
+  'fizz',
+  'buzz',
+  11,
+  'fizz',
+  13,
+  14,
+  'fizzbuzz',
+  16,
+  17,
+  'fizz',
+  19,
+  'buzz'
+]
+
 describe 'fizzbuzz' do
   it 'returns "fizz" when passed 3' do
     expect(fizzbuzz(3)).to eq 'fizz'
@@ -15,5 +38,8 @@ describe 'fizzbuzz' do
   end
   it 'returns "fizzbuzz" when passed 15' do
     expect(fizzbuzz(15)).to eq 'fizzbuzz'
+  end
+  it 'returns correct range when passed 1..20' do
+    expect(fizzbuzz(1..20)).to eq range
   end
 end

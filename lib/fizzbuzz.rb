@@ -5,13 +5,38 @@
 # In all other cases, the program simply returns the given number.
 
 def fizzbuzz(num)
-  if num == 3
-    "fizz"
-  elsif num == 5
-    "buzz"
-  elsif num == 15
-    "fizzbuzz"
-  else 
-    num
+  result_array = []
+  
+  if num.is_a?(Integer)
+    if num % 3 == 0
+      if num % 5 == 0
+        return "fizzbuzz"
+      else
+        return "fizz"
+      end
+    elsif num % 5 == 0
+      return "buzz"
+    else
+      return num
+    end
+  else
+    num.each do |i|
+      if i % 3 == 0 
+        if i % 5 == 0
+          result_array.push("fizzbuzz")
+        else        
+          result_array.push("fizz")
+        end
+      elsif i % 5 == 0
+        result_array.push("buzz")
+      else 
+        result_array.push(i)
+      end
+    end
   end
+
+  result_array
 end
+
+puts fizzbuzz(1..20)
+puts fizzbuzz(3)
