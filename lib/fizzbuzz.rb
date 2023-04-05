@@ -5,5 +5,13 @@
 # In all other cases, the program simply returns the given number.
 
 def fizzbuzz(num)
-  'fizz'
+  if num == 3
+    "fizz"
+  elsif num == 5
+    "buzz"
+  elsif num == 15
+    "fizzbuzz"
+  else 
+    num
+  end
 end
