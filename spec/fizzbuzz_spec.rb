@@ -29,17 +29,30 @@ range = [
   'buzz'
 ]
 
+num = rand(9999999)
+
 describe 'fizzbuzz' do
-  it 'returns "fizz" when passed 3' do
-    expect(fizzbuzz(3)).to eq 'fizz'
-  end
-  it 'returns "buzz" when passed 5' do
-    expect(fizzbuzz(5)).to eq 'buzz'
-  end
-  it 'returns "fizzbuzz" when passed 15' do
-    expect(fizzbuzz(15)).to eq 'fizzbuzz'
-  end
   it 'returns correct range when passed 1..20' do
     expect(fizzbuzz(1..20)).to eq range
+  end
+
+  if num % 3 == 0
+    if num % 5 == 0
+      it 'returns "fizzbuzz" when passed a multiple of 3 and 5' do
+        expect(fizzbuzz(num)).to eq 'fizzbuzz'
+      end
+    else
+      it 'returns "fizz" when passed a multiple of 3' do
+        expect(fizzbuzz(num)).to eq 'fizz'
+      end
+    end
+  elsif num % 5 == 0
+    it 'returns "buzz" when passed a multiple of 5' do
+      expect(fizzbuzz(num)).to eq 'buzz'
+    end
+  else
+    it 'returns num when passed a non-multiple of 3 or 5' do
+      expect(fizzbuzz(num)).to eq num.to_s
+    end
   end
 end
