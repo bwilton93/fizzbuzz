@@ -4,39 +4,29 @@
 # When passed a number that is a multiple of both 3 and 5, the program ignores the previous 2 rules and returns the message 'FizzBuzz'.
 # In all other cases, the program simply returns the given number.
 
-def fizzbuzz(num)
-  result_array = []
-  
-  if num.is_a?(Integer)
-    if num % 3 == 0
-      if num % 5 == 0
-        return "fizzbuzz"
-      else
-        return "fizz"
-      end
-    elsif num % 5 == 0
-      return "buzz"
+def fizzbuzz_calc(number)
+  if number % 3 == 0
+    if number % 5 == 0
+      return "fizzbuzz"
     else
-      return num
+      return "fizz"
     end
+  elsif number % 5 == 0
+    return "buzz"
   else
-    num.each do |i|
-      if i % 3 == 0 
-        if i % 5 == 0
-          result_array.push("fizzbuzz")
-        else        
-          result_array.push("fizz")
-        end
-      elsif i % 5 == 0
-        result_array.push("buzz")
-      else 
-        result_array.push(i)
-      end
-    end
+    return number
   end
-
-  result_array
 end
 
-puts fizzbuzz(1..20)
-puts fizzbuzz(3)
+def fizzbuzz(num)
+  result_array = []
+  if num.is_a?(Integer)
+    result_array.push(fizzbuzz_calc(num))
+    return result_array.join("")
+  else
+    num.each do |i|
+      result_array.push(fizzbuzz_calc(i))
+    end
+  end
+  result_array
+end
